@@ -21,3 +21,6 @@ LEFT JOIN LATERAL
 ##### postgrel 关于时间比较问题
 https://blog.csdn.net/sky_limitless/article/details/79527665 
 
+##### postgrel 时间转化
+https://blog.csdn.net/shenwansangz/article/details/69257595
+
