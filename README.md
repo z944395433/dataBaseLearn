@@ -11,16 +11,16 @@ select A.id,array_length(array_agg(A.keys), 1) from (
     select id,jsonb_object_keys(info) as keys from s_sys_paper 
 ) A GROUP BY A.id;
 ````
-##### 评价列
+##### get keys length in table 
 LEFT JOIN LATERAL
 ````	
- SELECT t.id, array_length(k.keys,1)
+ SELECT t.id, COALESCE(array_length(k.keys,1),0)
  FROM   s_sys_paper t
  LEFT   JOIN LATERAL (SELECT  array(SELECT jsonb_object_keys(info) FROM s_sys_paper) AS keys  ) k ON true;
 ````
-##### postgrel 关于时间比较问题
+##### postgrel time Comparison
 https://blog.csdn.net/sky_limitless/article/details/79527665 
 
-##### postgrel 时间转化
+##### postgrel time cast
 https://blog.csdn.net/shenwansangz/article/details/69257595
 
