@@ -12,7 +12,7 @@ select A.id,array_length(array_agg(A.keys), 1) from (
 ) A GROUP BY A.id;
 ````
 ### get keys length in table 
-#####LEFT JOIN LATERAL
+##### LEFT JOIN LATERAL
 ````	
  SELECT t.id, COALESCE(array_length(k.keys,1),0)
  FROM   s_sys_paper t
@@ -24,3 +24,16 @@ https://blog.csdn.net/sky_limitless/article/details/79527665
 ### postgrel time cast
 https://blog.csdn.net/shenwansangz/article/details/69257595
 
+### jsonb_set 
+##### qustion follows json update A->name->yys result A->name->yys2
+````
+{"A":{"name":"yys","age":18},"B":{"name":"yys1","age":19}}
+````
+##### answer
+````
+method1:
+update table jsonb_set(table.info,'{"A","name"}','yys2')
+
+method2:
+update table json_set(table.info,'{"A"}',info->>'A' || {"name":"yys"})
+````
