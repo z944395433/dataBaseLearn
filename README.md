@@ -37,3 +37,11 @@ update table jsonb_set(table.info,'{"A","name"}','yys2')
 method2:
 update table json_set(table.info,'{"A"}',info->>'A' || {"name":"yys"})
 ````
+
+### exist key in jsonb
+````
+这是一个坑 在service中 必须用 ?? 
+在sql中 使用?
+example: select '{"name":"yys"}'::jsonb ? 'name'  true
+service: select '{"name":"yys"}'::jsonb ?? 'name'  true
+````
