@@ -45,3 +45,7 @@ update table json_set(table.info,'{"A"}',info->>'A' || {"name":"yys"})
 example: select '{"name":"yys"}'::jsonb ? 'name'  true
 service: select '{"name":"yys"}'::jsonb ?? 'name'  true
 ````
+
+
+### webservice
+https://www.cnblogs.com/taojinxuan/p/11136340.html
